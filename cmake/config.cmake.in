@@ -1,0 +1,3 @@
+@PACKAGE_INIT@
+include("${CMAKE_CURRENT_LIST_DIR}/@CPP_LIB@Targets.cmake")
+check_required_components(@CPP_LIB@)
