@@ -85,41 +85,42 @@ void mergeSort(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> end)
     if (end - begin == 0 || end - begin == 1)
         return;
     
-    vec_size_t<T> mid = (begin + end) / 2, i = begin, j = mid;
+    vec_size_t<T> mid = (begin + end) / 2; 
     mergeSort(v, begin, mid);
     mergeSort(v, mid, end);
 
-    std::vector<T> merged_v;
+    std::vector<T> left(v.begin() + begin, v.begin() + mid);
+    std::vector<T> right(v.begin() + mid, v.begin() + end);
+
+    vec_size_t<T> i = 0, j = 0;
 
     for (vec_size_t<T> k = 0; k < end - begin; ++k)
     {
-        if (i >= mid)
+        if (i >= mid - begin)
         {
-            merged_v.push_back(v.at(j));
+            v.at(begin + k) = right.at(j);
             ++j;
             continue;
         }
 
-        if (j >= end)
+        if (j >= end - mid)
         {
-            merged_v.push_back(v.at(i));
+            v.at(begin + k) = left.at(i);
             ++i;
             continue;
         }
 
-        if (v.at(i) < v.at(j))
+        if (left.at(i) < right.at(j))
         {
-            merged_v.push_back(v.at(i));
+            v.at(begin + k) = left.at(i);
             ++i;
         }
         else
         {
-            merged_v.push_back(v.at(j));
+            v.at(begin + k) = right.at(j);
             ++j;
         }
     }
-
-    std::swap_ranges(v.begin() + begin, v.begin() + end, merged_v.begin());
 }
 
 template <typename T>
