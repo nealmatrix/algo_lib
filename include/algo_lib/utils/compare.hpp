@@ -1,11 +1,11 @@
-#ifndef COMPARE_HPP_
-#define COMPARE_HPP_
+#ifndef ALGO_LIB_COMPARE_HPP_
+#define ALGO_LIB_COMPARE_HPP_
 
 #include <vector>
 
-#include <cpp_lib/utils/common.hpp>
+#include <algo_lib/utils/common.hpp>
 
-namespace cpp_lib
+namespace algo_lib
 {
 
 template <typename T>
@@ -22,6 +22,6 @@ bool areVectorsSame(const std::vector<T> &v0, const std::vector<T> &v1)
     return true;
 }
 
-} // namespace cpp_lib
+} // namespace algo_lib
 
 #endif // COMPARE_HPP_

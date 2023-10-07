@@ -1,11 +1,11 @@
 #include <sstream>
 #include <cmath>
 
-#include "cpp_lib/utils/common.hpp"
-#include "cpp_lib/algorithm/integer.hpp"
-#include "cpp_lib/utils/compare.hpp"
+#include "algo_lib/algorithm/integer.hpp"
+#include "algo_lib/utils/common.hpp"
+#include "algo_lib/utils/compare.hpp"
 
-namespace cpp_lib
+namespace algo_lib
 {
 std::ostream &operator<<(std::ostream &os, const Integer &integer)
 {
@@ -189,4 +189,4 @@ Integer Integer::operator*(const Integer &integer)
     return result;
 }
 
-} // namespace cpp_lib
+} // namespace algo_lib

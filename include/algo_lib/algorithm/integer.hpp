@@ -1,12 +1,12 @@
-#ifndef CPP_LIB_INTEGER_HPP_
-#define CPP_LIB_INTEGER_HPP_
+#ifndef ALGO_LIB_INTEGER_HPP_
+#define ALGO_LIB_INTEGER_HPP_
 
 #include <iostream>
 #include <vector>
 
-#include "cpp_lib/utils/common.hpp"
+#include "algo_lib/utils/common.hpp"
 
-namespace cpp_lib
+namespace algo_lib
 {
 
 class Integer
@@ -38,6 +38,6 @@ private:
 
 };
 
-} // namespace cpp_lib
+} // namespace algo_lib
 
-#endif // CPP_LIB_INTEGER_HPP_
+#endif // ALGO_LIB_INTEGER_HPP_

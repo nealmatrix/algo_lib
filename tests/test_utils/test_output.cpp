@@ -2,13 +2,13 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "cpp_lib/utils/output.hpp"
+#include "algo_lib/utils/output.hpp"
 
 BOOST_AUTO_TEST_SUITE(test_output)
 
 BOOST_AUTO_TEST_CASE(test_vector)
 {
-    using cpp_lib::operator<<;
+    using algo_lib::operator<<;
     std::vector<double> v = {1.1, 2.0, 3, 0.9};
     std::cout << v << std::endl;
 }

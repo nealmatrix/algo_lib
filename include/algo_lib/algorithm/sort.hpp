@@ -1,12 +1,12 @@
-#ifndef CPP_LIB_SORT_HPP_
-#define CPP_LIB_SORT_HPP_
+#ifndef ALGO_LIB_SORT_HPP_
+#define ALGO_LIB_SORT_HPP_
 
 #include <vector>
 #include <cstdint>
 
-#include <cpp_lib/utils/common.hpp>
+#include <algo_lib/utils/common.hpp>
 
-namespace cpp_lib
+namespace algo_lib
 {
 
 template <typename T>
@@ -191,6 +191,6 @@ std::pair<std::vector<T>, uint32_t> countInversions(std::vector<T> &v)
     return countInversions(v, 0, v.size());
 }
 
-} // namespace cpp_lib
+} // namespace algo_lib
 
-#endif // CPP_LIB_SORT_HPP_
+#endif // ALGO_LIB_SORT_HPP_
