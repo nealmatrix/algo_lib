@@ -6,6 +6,7 @@
 #include "algo_lib/utils/compare.hpp"
 
 BOOST_AUTO_TEST_SUITE(test_sort)
+
 BOOST_AUTO_TEST_CASE(test_sort_0)
 {
     std::vector<double> v = {2.2, 0.9, 1, 5.1, 3.4};
@@ -28,9 +29,9 @@ BOOST_AUTO_TEST_CASE(test_sort_0)
     BOOST_TEST_CHECK(algo_lib::same(v3, v_sort));
 
     auto v4 = v;
-    auto pair = algo_lib::countInversions(v4);
-    BOOST_TEST_CHECK(algo_lib::same(pair.first, v_sort));
-    BOOST_TEST_CHECK(pair.second == 3);
+    auto inversions_num = algo_lib::countInversions(v4);
+    BOOST_TEST_CHECK(algo_lib::same(v4, v_sort));
+    BOOST_TEST_CHECK(inversions_num == 3);
 }
 
 BOOST_AUTO_TEST_CASE(test_sort_1)
@@ -55,9 +56,9 @@ BOOST_AUTO_TEST_CASE(test_sort_1)
     BOOST_TEST_CHECK(algo_lib::same(v3, v_sort));
 
     auto v4 = v;
-    auto pair = algo_lib::countInversions(v4);
-    BOOST_TEST_CHECK(algo_lib::same(pair.first, v_sort));
-    BOOST_TEST_CHECK(pair.second == 10);
+    auto inversions_num = algo_lib::countInversions(v4);
+    BOOST_TEST_CHECK(algo_lib::same(v4, v_sort));
+    BOOST_TEST_CHECK(inversions_num == 10);
 }
 
 BOOST_AUTO_TEST_CASE(test_sort_2)
@@ -82,9 +83,9 @@ BOOST_AUTO_TEST_CASE(test_sort_2)
     BOOST_TEST_CHECK(algo_lib::same(v3, v_sort));
 
     auto v4 = v;
-    auto pair = algo_lib::countInversions(v4);
-    BOOST_TEST_CHECK(algo_lib::same(pair.first, v_sort));
-    BOOST_TEST_CHECK(pair.second == 0);
+    auto inversions_num = algo_lib::countInversions(v4);
+    BOOST_TEST_CHECK(algo_lib::same(v4, v_sort));
+    BOOST_TEST_CHECK(inversions_num == 0);
 }
 
 BOOST_AUTO_TEST_CASE(test_sort_3)
@@ -109,9 +110,9 @@ BOOST_AUTO_TEST_CASE(test_sort_3)
     BOOST_TEST_CHECK(algo_lib::same(v3, v_sort));
 
     auto v4 = v;
-    auto pair = algo_lib::countInversions(v4);
-    BOOST_TEST_CHECK(algo_lib::same(pair.first, v_sort));
-    BOOST_TEST_CHECK(pair.second == 0);
+    auto inversions_num = algo_lib::countInversions(v4);
+    BOOST_TEST_CHECK(algo_lib::same(v4, v_sort));
+    BOOST_TEST_CHECK(inversions_num == 0);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

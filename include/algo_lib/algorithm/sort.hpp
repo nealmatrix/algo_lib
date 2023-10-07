@@ -86,6 +86,7 @@ void mergeSort(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> end)
         return;
     
     vec_size_t<T> mid = (begin + end) / 2; 
+
     mergeSort(v, begin, mid);
     mergeSort(v, mid, end);
 
@@ -130,60 +131,55 @@ void mergeSort(std::vector<T> &v)
 }
 
 template <typename T>
-std::pair<std::vector<T>, std::uint32_t> countInversions(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> end)
+std::uint32_t countInversions(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> end)
 {
-    if (end - begin == 0)
-        return {{}, 0};
-
-    if (end - begin == 1)
-        return {{v.at(begin)}, 0};
+    if (end - begin == 0 || end - begin == 1)
+        return 0;
 
     vec_size_t<T> mid = (begin + end) / 2;    
 
-    auto pair_left = countInversions(v, begin, mid);
-    const auto &left = pair_left.first;
+    auto left_count = countInversions(v, begin, mid);
+    auto right_count = countInversions(v, mid, end);
 
-    auto pair_right = countInversions(v, mid, end);
-    const auto &right = pair_right.first;
+    std::vector<T> left(v.begin() + begin, v.begin() + mid);
+    std::vector<T> right(v.begin() + mid, v.begin() + end);
 
     vec_size_t<T> i = 0, j = 0, split_inversions_num = 0;
-
-    std::vector<T> result;
 
     for (vec_size_t<T> k = 0; k < end - begin; ++k)
     {
         if (i >= mid - begin)
         {
-            result.push_back(right.at(j));
+            v.at(begin + k) = right.at(j);
             ++j;
             continue;
         }
 
         if (j >= end - mid)
         {
-            result.push_back(left.at(i));
+            v.at(begin + k) = left.at(i);
             ++i;
             continue;
         }
 
         if (left.at(i) < right.at(j))
         {
-            result.push_back(left.at(i));
+            v.at(begin + k) = left.at(i);
             ++i;
         }
         else
         {
-            result.push_back(right.at(j));
+            v.at(begin + k) = right.at(j);
             ++j;
-            split_inversions_num += mid - i - begin;
+            split_inversions_num += mid - begin - i;
         }
     }
 
-    return {result, pair_left.second + split_inversions_num + pair_right.second};
+    return left_count + split_inversions_num + right_count;
 }
 
 template <typename T>
-std::pair<std::vector<T>, uint32_t> countInversions(std::vector<T> &v)
+std::uint32_t countInversions(std::vector<T> &v)
 {
     return countInversions(v, 0, v.size());
 }
