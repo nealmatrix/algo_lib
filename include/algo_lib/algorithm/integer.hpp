@@ -29,12 +29,13 @@ public:
     Integer operator*(const Integer &integer);
 
 private:
-    int at(vec_size_t<int> i) const {return reverse_digits_.at(i);}
+    int at(deq_size_t<int> i) const {return reverse_digits_.at(i);}
+    void push_front(int i) {reverse_digits_.push_front(i);}
     void push_back(int i) {reverse_digits_.push_back(i);}
     void pop_back() {reverse_digits_.pop_back();}
 
 private:
-    std::vector<int> reverse_digits_;
+    std::deque<int> reverse_digits_;
 
 };
 
