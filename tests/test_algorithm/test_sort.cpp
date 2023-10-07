@@ -24,7 +24,8 @@ BOOST_AUTO_TEST_CASE(test_sort_0)
     BOOST_TEST_CHECK(algo_lib::areVectorsSame(v2, v_sort));
 
     auto v3 = v;
-    BOOST_TEST_CHECK(algo_lib::areVectorsSame(algo_lib::mergeSort(v3), v_sort));
+    algo_lib::mergeSort(v3);
+    BOOST_TEST_CHECK(algo_lib::areVectorsSame(v3, v_sort));
 
     auto v4 = v;
     auto pair = algo_lib::countInversions(v4);
@@ -50,7 +51,8 @@ BOOST_AUTO_TEST_CASE(test_sort_1)
     BOOST_TEST_CHECK(algo_lib::areVectorsSame(v2, v_sort));
 
     auto v3 = v;
-    BOOST_TEST_CHECK(algo_lib::areVectorsSame(algo_lib::mergeSort(v3), v_sort));
+    algo_lib::mergeSort(v3);
+    BOOST_TEST_CHECK(algo_lib::areVectorsSame(v3, v_sort));
 
     auto v4 = v;
     auto pair = algo_lib::countInversions(v4);
@@ -76,7 +78,8 @@ BOOST_AUTO_TEST_CASE(test_sort_2)
     BOOST_TEST_CHECK(algo_lib::areVectorsSame(v2, v_sort));
 
     auto v3 = v;
-    BOOST_TEST_CHECK(algo_lib::areVectorsSame(algo_lib::mergeSort(v3), v_sort));
+    algo_lib::mergeSort(v3);
+    BOOST_TEST_CHECK(algo_lib::areVectorsSame(v3, v_sort));
 
     auto v4 = v;
     auto pair = algo_lib::countInversions(v4);
@@ -102,11 +105,13 @@ BOOST_AUTO_TEST_CASE(test_sort_3)
     BOOST_TEST_CHECK(algo_lib::areVectorsSame(v2, v_sort));
 
     auto v3 = v;
-    BOOST_TEST_CHECK(algo_lib::areVectorsSame(algo_lib::mergeSort(v3), v_sort));
+    algo_lib::mergeSort(v3);
+    BOOST_TEST_CHECK(algo_lib::areVectorsSame(v3, v_sort));
 
     auto v4 = v;
     auto pair = algo_lib::countInversions(v4);
     BOOST_TEST_CHECK(algo_lib::areVectorsSame(pair.first, v_sort));
     BOOST_TEST_CHECK(pair.second == 0);
 }
+
 BOOST_AUTO_TEST_SUITE_END()

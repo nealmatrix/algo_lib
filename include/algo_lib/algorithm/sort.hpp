@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <cstdint>
+#include <algorithm>
 
 #include <algo_lib/utils/common.hpp>
 
@@ -79,57 +80,52 @@ void bubbleSort(std::vector<T> &v)
 }
 
 template <typename T>
-std::vector<T> mergeSort(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> end)
+void mergeSort(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> end)
 {
-    if (end - begin == 0)
-        return {};
+    if (end - begin == 0 || end - begin == 1)
+        return;
+    
+    vec_size_t<T> mid = (begin + end) / 2, i = begin, j = mid;
+    mergeSort(v, begin, mid);
+    mergeSort(v, mid, end);
 
-    if (end - begin == 1)
-        return {v.at(begin)};
-
-    vec_size_t<T> mid = (begin + end) / 2;    
-
-    auto left = mergeSort(v, begin, mid);
-    auto right = mergeSort(v, mid, end);
-
-    vec_size_t<T> i = 0, j = 0;
-
-    std::vector<T> result;
+    std::vector<T> merged_v;
 
     for (vec_size_t<T> k = 0; k < end - begin; ++k)
     {
-        if (i >= mid - begin)
+        if (i >= mid)
         {
-            result.push_back(right.at(j));
+            merged_v.push_back(v.at(j));
             ++j;
             continue;
         }
 
-        if (j >= end - mid)
+        if (j >= end)
         {
-            result.push_back(left.at(i));
+            merged_v.push_back(v.at(i));
             ++i;
             continue;
         }
 
-        if (left.at(i) < right.at(j))
+        if (v.at(i) < v.at(j))
         {
-            result.push_back(left.at(i));
+            merged_v.push_back(v.at(i));
             ++i;
         }
         else
         {
-            result.push_back(right.at(j));
+            merged_v.push_back(v.at(j));
             ++j;
         }
     }
-    return result;
+
+    std::swap_ranges(v.begin() + begin, v.begin() + end, merged_v.begin());
 }
 
 template <typename T>
-std::vector<T> mergeSort(std::vector<T> &v)
+void mergeSort(std::vector<T> &v)
 {
-    return mergeSort(v, 0, v.size());    
+    mergeSort(v, 0, v.size());    
 }
 
 template <typename T>
